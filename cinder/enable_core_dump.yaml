@@ -1,0 +1,15 @@
+---
+- hosts: hostList
+  tasks:
+    - name: Create corefiles directory 
+      shell: mkdir -p /tmp/corefiles
+      become: yes
+    - name: Change permissions 
+      shell: chmod 777 /tmp/corefiles 
+      become: yes
+    - name: Adding to core_pattern
+      shell: echo "/tmp/corefiles" > /proc/sys/kernel/core_pattern 
+      become: yes
+    - name: Adding to core_pattern
+      shell: echo 1 > /proc/sys/kernel/core_uses_pid 
+      become: yes
